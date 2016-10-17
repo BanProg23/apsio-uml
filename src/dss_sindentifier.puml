@@ -1,0 +1,29 @@
+@startuml
+
+	Actor Utilisateur as U
+	participant Application as app
+	U -> app : appuie sur s'identifier
+	app --> U : envoit le formulaire pour s'identifier
+	loop tant que l'utilisateur n'est pas identifié
+		loop tant que l'utilisateur ne valide pas les informations demandé
+		U -> app : remplit les informations pour s'identifier
+			alt les informations sont remplit case
+				app -> U : Peut appuyer sur le bouton valider
+				U --> app : appuie sur le bouton valider
+			else
+				U -> app : doit corriger les informations demandées
+			end
+		end
+		app -> app : vérifie que les informations sont \nconforme suivant la base de données
+		alt les informations sont conforme case
+			app -> U : identifie l'utilisateur
+			app --> U : le renvoie à la page d'accueil
+		else
+			app -> U : affiche un message d'echec de l'identification
+			app --> U : renvoit l'utilisateur sur la page d'identification
+		end
+			
+	end
+	app --> U : Renvoit à la page d'accueil
+	
+@enduml
