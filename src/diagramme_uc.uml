@@ -1,0 +1,43 @@
+@startuml
+
+left to right direction
+
+actor Utilisateur
+actor UtilisateurEnregistré
+actor Tresorier
+actor ServeurApp
+actor ServeurCalendrier
+
+Tresorier --> UtilisateurEnregistré
+
+UtilisateurEnregistré --> Utilisateur
+
+Utilisateur -- (S'enregistrer)
+(S'enregistrer) -- ServeurApp
+(S'identifier) -- ServeurApp
+
+
+Tresorier -- (VoirTousLesProfils)
+(VoirTousLesProfils) ..> (S'identifier) : include
+
+UtilisateurEnregistré -- (GererMonProfil)
+(GererMonProfil) ..> (S'identifier) : include
+
+UtilisateurEnregistré -- (ConsulterBilan)
+(ConsulterBilan) ..> (S'identifier) : include
+
+UtilisateurEnregistré -- (ConsulterMesSorties)
+(ConsulterMesSorties) ..> (S'identifier) : include
+
+UtilisateurEnregistré -- (OrganiserUneSortie)
+(OrganiserUneSortie) ..> (S'identifier) : include
+
+UtilisateurEnregistré -- (ConsulterLeCalendrier)
+(ConsulterLeCalendrier) ..> (S'identifier) : include
+
+(ConsulterLeCalendrier) -- ServeurCalendrier
+
+
+
+
+@enduml
