@@ -25,14 +25,25 @@
 	class Personne {
 		+ id : int
 		+ nom : String
+		+ mail : String
 		+ login : String
 		+ password : String
 		+ droit : String
 	}
 	
+	class Payer {
+		+payer : boolean
+	}
+	
+	
+	
 	Sortie "0..*"--"1" Vehicule : Utiliser
-	Sortie "0..*"-l-"1..*" Personne : "    Sortir        "
+	Sortie "0..*"-l-"1..*" Personne : "                 Sortir        "
+	(Personne, Sortie) .. Payer
+	
 	Personne "1"-r-"0..*" Sortie : "      Organiser          "
 	Personne "1"--"0..*" Vehicule : "Posseder"
+	
+	
 	
 @enduml
