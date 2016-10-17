@@ -6,7 +6,6 @@ actor Utilisateur
 actor UtilisateurEnregistré
 actor Tresorier
 actor ServeurApp
-actor ServeurCalendrier
 
 Tresorier --> UtilisateurEnregistré
 
@@ -29,14 +28,13 @@ UtilisateurEnregistré -- (ConsulterBilan)
 UtilisateurEnregistré -- (ConsulterMesSorties)
 (ConsulterMesSorties) ..> (S'identifier) : include
 
-UtilisateurEnregistré -- (OrganiserUneSortie)
-(OrganiserUneSortie) ..> (S'identifier) : include
+UtilisateurEnregistré -- (GererUneSortie)
+(GererUneSortie) ..> (S'identifier) : include
 
-UtilisateurEnregistré -- (ConsulterLeCalendrier)
-(ConsulterLeCalendrier) ..> (S'identifier) : include
+UtilisateurEnregistré -- (GererMonCalendrier)
+(GererMonCalendrier) ..> (S'identifier) : include
 
-(ConsulterLeCalendrier) -- ServeurCalendrier
-
+(GererMonCalendrier) -- ServeurApp
 
 
 
