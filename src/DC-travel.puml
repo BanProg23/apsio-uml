@@ -4,29 +4,35 @@
 	hide methods
 	
 	class Sortie {
-		+ Id : int
-		+ Date : Date
-		+ Destination String
-		+ Trajet : int
-		+ MontantPeage : double
+		+ id : int
+		+ date : Date
+		+ destination : String
+		+ distanceTotalAller : double
+		+ distanceTotalRetour : double
+		+ montantPeageAller : double
+		+ montantPeageRetour : double			
 	}
 	
 	class Vehicule {
-		+ Id : int
-		+ Carburant : String
-		+ Vehicule : String
-		+ Consomation : int
+		+ id : int
+		+ carburant : String
+		+ vehicule : String
+		+ consomation : double
+		+ nbPlace : int
+		+ commentairess : String
 	}
 	
 	class Personne {
-		+ Id : int
-		+ Nom : String
-		+ Role : String
-		+ Droit : String
+		+ id : int
+		+ nom : String
+		+ login : String
+		+ password : String
+		+ droit : String
 	}
 	
 	Sortie "0..*"--"1" Vehicule : Utiliser
-	Sortie "0..*"--"1..*" Personne : Sortir
-	Personne "1"--"1" Sortie : > Organiser
+	Sortie "0..*"-l-"1..*" Personne : "    Sortir        "
+	Personne "1"-r-"0..*" Sortie : "      Organiser          "
+	Personne "1"--"0..*" Vehicule : "Posseder"
 	
 @enduml
