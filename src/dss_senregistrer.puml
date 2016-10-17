@@ -1,0 +1,19 @@
+@startuml
+
+	Actor Utilisateur as U
+	participant Application as app
+	U -> app : appuie sur s'enregistrer
+	app --> U : envoit le formulaire pour s'enregistrer
+	loop tant que l'utilisateur ne valide pas les informations demandé
+	U -> app : remplit les informations pour s'enregistrer
+		alt les informations remplissent les conditions affichées case
+			app -> U : Peut appuyer sur le bouton valider
+			U --> app : appuie sur le bouton valider
+		else
+			U -> app : doit corriger les informations demandées
+		end
+	end
+	app -> app : Enregistre l'utilisateur
+	app --> U : Renvoit à la page d'accueil
+	
+@enduml
