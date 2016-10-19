@@ -19,7 +19,7 @@
 		+ vehicule : String
 		+ consomation : double
 		+ nbPlace : int
-		+ commentairess : String
+		+ commentaires : String
 	}
 	
 	class Personne {
@@ -32,7 +32,12 @@
 	}
 	
 	class Payer {
-		+payer : boolean
+		+ payer : boolean
+	}
+	
+	class Disponibilite {
+		+ id : int
+		+ dateDisponible : Date 
 	}
 	
 	
@@ -43,6 +48,7 @@
 	
 	Personne "1"-r-"0..*" Sortie : "      Organiser          "
 	Personne "1"--"0..*" Vehicule : "Posseder"
+	Personne "0..*"--"0..*" Disponibilite : Posseder
 	
 	
 	
